@@ -13,7 +13,12 @@ export class CrudLocalStorageComponent implements OnInit {
   isNewUser: boolean = false;
   userObj: User = new User();
   userList: User[] = [];
+  count = signal<number>(0);
 
+
+  onCount(){
+    this.count.update(e=> e+1);
+  }
 
 
   ngOnInit(): void {

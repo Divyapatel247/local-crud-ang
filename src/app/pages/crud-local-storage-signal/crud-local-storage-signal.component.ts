@@ -1,9 +1,11 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, model } from '@angular/core';
 import { User } from '../crud-local-storage/crud-local-storage.component';
+import { PopupComponent } from '../popup/popup.component';
+
 
 @Component({
   selector: 'app-crud-local-storage-signal',
-  imports: [],
+  imports: [PopupComponent],
   templateUrl: './crud-local-storage-signal.component.html',
   styleUrl: './crud-local-storage-signal.component.css'
 })
@@ -65,6 +67,18 @@ export class CrudLocalStorageSignalComponent implements OnInit {
     }else{
       this.userForm.update(oldObj=>({...oldObj,[fieldName]:event.target.value}))
     }
+  }
+  popupMessage: string = ''; // This controls the popup's visibility
+
+  // Show the popup
+  showPopup() {
+    this.popupMessage = 'Hello, this is a popup!'; // Setting this triggers the popup
+  }
+
+  // Handle when the popup is closed
+  onPopupClosed() {
+    console.log('Popup closed');
+    this.popupMessage = ''; // Clear the message to hide the popup
   }
 
 
